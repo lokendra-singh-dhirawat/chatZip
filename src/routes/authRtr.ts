@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { authCntrl } from "../controllers/authCntrl";
 import { validationMiddleware } from "../middleware/validateSchema";
-import { authenticated } from "../config/passport";
+import { authenticated } from "../config/configurePassport";
 
 import {
   registerSchema,
