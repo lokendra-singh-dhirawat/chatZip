@@ -4,9 +4,10 @@ import { ServerToClientEvents, ClientToServerEvents } from "./src/types/socket";
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import passport from "passport";
 import systemHealthCheckRouter from "./src/routes/systemHealthCheckRtr";
-import { loggers } from "winston";
 import logger from "./src/config/logger";
+import { configurePassport } from "./src/config/configurePassport";
 
 dotenv.config();
 const app = express();
@@ -14,6 +15,8 @@ const app = express();
 app.use(morgan("dev"));
 
 app.set("json spaces", 5);
+app.use(passport.initialize());
+configurePassport();
 app.use(express.json());
 
 app.use("/", systemHealthCheckRouter);
