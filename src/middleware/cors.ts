@@ -1,9 +1,6 @@
 import type { RequestHandler } from "express";
 
-const ALLOW = new Set([
-  "http://localhost:5173",
-  "https://inventory-frontend-yjxe.vercel.app",
-]);
+const ALLOW = new Set(["http://localhost:5173"]);
 
 const corsMiddleware: RequestHandler = (req, res, next) => {
   const origin = req.headers.origin as string | undefined;
